@@ -21,20 +21,39 @@ namespace ToDoListApp
             ToDo toDo = new ToDo();
             toDo.activity = add;
 
-            toDolist.Add(toDo);
+            toDoList.Add(toDo);
+            Console.WriteLine("Item added! Press any key to return to the menu.");
+            Console.ReadKey();
+
         }
         public static void removeItems() 
         {
             Console.Clear();
             Console.WriteLine("Enter an item you want to remove");
             
-        }
-        public static void DisplayItems() 
-        { 
             
         }
+        public static void DisplayItems() 
+        {
+            Console.Clear();
+            Console.WriteLine("To-do list: ");
+            if (toDoList.Count == 0)
+            {
+                Console.WriteLine("There are no items to display.");
+            }
+            else 
+            {
+                for (int i = 0; i < toDoList.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {toDoList[i].activity}");
+                }
+            }
 
-        private static List<ToDo> toDolist = new List<ToDo>();
+            Console.WriteLine("Press any key to return to menu.");
+            Console.ReadKey();
+        }
+
+        private static List<ToDo> toDoList = new List<ToDo>();
 
         static void Main(string[] args)
         {
@@ -44,24 +63,27 @@ namespace ToDoListApp
                 Console.WriteLine("1. To add items to your to-do list.");
                 Console.WriteLine("2. To remove items from your to-do list.");
                 Console.WriteLine("3. To view the items in your to-do list.");
-                string menuOptions = Console.ReadLine();
-                int parsedMenuOptions = int.Parse(menuOptions);
+                string Choices = Console.ReadLine();
+                int parsedChoices = int.Parse(Choices);
 
-                if (parsedMenuOptions == 1)
+                if (parsedChoices == 1)
                 {
                     AddItems();
+                    Console.Clear();
                 }
 
-                if (parsedMenuOptions == 2)
+                if (parsedChoices == 2)
                 {
-
+                    // I don't know how to remove from listtt :(
                 }
 
-                if (parsedMenuOptions == 3)
+                if (parsedChoices == 3)
                 {
-
+                    
+                    DisplayItems();
+                    Console.Clear();
                 }
-                Console.Clear();
+                
             }
 
         }
